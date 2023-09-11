@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-const ActivePage: React.FC = () => {
+const ActivatePage: React.FC = () => {
 
 
     const router = useRouter()
@@ -116,4 +116,4 @@ const ActivePage: React.FC = () => {
     )
 }
 
-export default ActivePage
+export default ActivatePage

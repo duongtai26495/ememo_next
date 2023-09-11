@@ -103,10 +103,10 @@ const RegisterPage: React.FC = () => {
   }
 
   const sendActiveEmail = async () => {
-    const resultSendEmail: any = await fetchDataFromAPI(`public/send-active-mail?email=${email}`, "GET")
+    const resultSendEmail: any = await fetchDataFromAPI(`public/send-activate-mail?email=${email}`, "GET")
     if (resultSendEmail.status === SUCCESS_STATUS) {
       setLoading(false)
-      router.push("/active-account")
+      router.push("/activate-account")
     }
   }
 
