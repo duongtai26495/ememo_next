@@ -32,7 +32,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </header>
-      <header className={`${isOpenMenu ? "left-0" : "-left-3/4"} navigation-sidebar w-3/4 lg:w-16 flex-col h-full bg-pink-700 z-10 absolute top-12 lg:top-0 flex lg:hover:w-48 transition-all duration-300 px-2 items-start py-10 overflow-x-hidden`}>
+      <header className={`${isOpenMenu ? "left-0" : "-left-3/4"} lg:left-0 navigation-sidebar w-3/4 lg:w-16 flex-col h-full bg-pink-700 z-10 absolute top-12 lg:top-0 flex lg:hover:w-48 transition-all duration-300 px-2 items-start py-10 overflow-x-hidden`}>
         <div className='w-full'>
           <Link className='hidden lg:flex gap-3 items-center w-fit' href="/">
             <svg className="cursor-pointer w-12 nav-logo" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">

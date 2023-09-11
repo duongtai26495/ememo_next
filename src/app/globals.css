@@ -71,3 +71,22 @@ body {
   padding: 10px;
   color:var(--secondary-color) !important;
 }
+@media (min-width:1024px){
+  .authen-box{
+    width: 500px;
+  }
+  .background-page{
+    width: 500px;
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+  100% { transform: translateX(0); }
+}
+
+.shake-button {
+  animation: shake .5s ease-in-out;
+}

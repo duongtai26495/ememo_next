@@ -42,8 +42,10 @@ const LoginPage: React.FC = () => {
   }, [])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 background-page">
-      <div className="lg:bg-white bg-opacity-80 p-8 rounded-lg lg:shadow-lg w-full lg:w-96">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="flex w-full lg:w-fit rounded-lg lg:shadow-lg overflow-hidden">
+        <div className='hidden lg:flex w-full background-page' style={{backgroundImage:"url(https://source.unsplash.com/random)"}}></div>
+        <div className='lg:bg-white p-8 w-full authen-box'>
         <h1 className="text-2xl font-semibold mb-4">Đăng nhập</h1>
         <div className=''>
           <div className="mb-4">
@@ -113,6 +115,7 @@ const LoginPage: React.FC = () => {
             Google
           </button>
         </div>
+      </div>
       </div>
     </div>
   );

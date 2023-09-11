@@ -1,7 +1,14 @@
-'use client'
+import Header from '@/components/Header'
+import '@/app/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import '@/app/globals.css'
+
+
+
+export function generateStaticParams() {
+  return [{locale: 'en'}, {locale: 'vi'}];
+}
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +25,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {children}
+        <main className='w-full flex flex-col lg:flex-row transition-all'>
+          <Header />
+          <div className='lg:pl-16'>
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   )
