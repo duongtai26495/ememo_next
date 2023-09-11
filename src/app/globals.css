@@ -6,6 +6,8 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --primary-color: #1C1C1BFF;
+  --secondary-color:#CE4A7EFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,11 +19,55 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--primary-color));
+  background-color: var(--primary-color);
+}
+
+.primary-background{
+  background-color: var(--primary-color) !important;
+}
+
+.secondary-background{
+  background-color: var(--secondary-color) !important;
+}
+
+.navigation-sidebar svg:not(.nav-logo) {
+  width: 25px !important;
+  height: 25px !important;
+}
+
+
+.navigation-sidebar:hover > .collapse-menu{
+  opacity: 0;
+}
+
+.navigation-sidebar:hover > .expand-menu{
+  opacity: 1;
+}
+.background-page{
+  background-size: cover;
+  background-position: center center;
+}
+.st0{opacity:0.2;fill:none;stroke:#000000;stroke-width:5.000000e-02;stroke-miterlimit:10;}
+.cls-1{fill:none;}
+.m-menu_icons.open path:nth-child(2) {
+  opacity: 0;
+  transition-duration: 500ms;
+}
+
+.m-menu_icons.open path:first-child {
+  transition-duration: 500ms;
+  transform: rotate(45deg) translateX(6px) translateY(-6px);
+}
+
+.m-menu_icons.open path:nth-child(3) {
+  transition-duration: 500ms;
+  transform: rotate(-45deg) translateX(-12px);
+}
+
+.active{
+  background-color: white !important;
+  border-radius: 10px;
+  padding: 10px;
+  color:var(--secondary-color) !important;
 }
