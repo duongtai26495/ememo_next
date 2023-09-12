@@ -1,5 +1,5 @@
-export const RememberMe:string = "rememberme";
-export const URL_PREFIX:string = "http://192.168.1.20:8080/"
+
+export const URL_PREFIX:string = "http://192.168.1.10:8080/"
 export const SUCCESS_STATUS:string = "SUCCESS"
 
 export const ACTIVATE_EMAIL:string = "activate_email"

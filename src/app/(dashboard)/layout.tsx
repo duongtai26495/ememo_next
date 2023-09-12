@@ -1,7 +1,10 @@
+
 import Header from '@/components/Header'
 import '@/app/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { useEffect } from 'react';
+import { checkLoginUser } from '../utils/api_functions';
 
 
 
@@ -22,6 +25,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="en">
       <body className={inter.className}>

@@ -1,5 +1,5 @@
 "use client"
-import { fetchDataFromAPI } from '@/app/assets/api_functions';
+import { fetchDataFromAPI } from '@/app/utils/api_functions';
 import { ACTIVATE_EMAIL, SUCCESS_STATUS } from '@/app/assets/constants';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';

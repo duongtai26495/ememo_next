@@ -1,5 +1,5 @@
 "use client"
-import { fetchDataFromAPI } from '@/app/assets/api_functions';
+import { fetchDataFromAPI } from '@/app/utils/api_functions';
 import { ACTIVATE_EMAIL, SUCCESS_STATUS } from '@/app/assets/constants';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';
@@ -119,12 +119,12 @@ const RegisterPage: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
 
-      <div className="flex w-fit rounded-lg lg:shadow-lg overflow-hidden">
+      <div className="flex w-full lg:w-fit rounded-lg lg:shadow-lg overflow-hidden">
         <div className='hidden lg:flex w-full background-page' style={{ backgroundImage: "url(https://source.unsplash.com/random)" }}></div>
-        <div className='lg:bg-white p-8 w-full authen-box'>
+        <div className='lg:bg-white p-8 max-w-sm lg:max-w-lg authen-box mx-auto'>
           <h2 className="text-2xl font-semibold mb-4">Register</h2>
           <div className='flex gap-3 items-center'>
-            <div className="mb-4 flex flex-col">
+            <div className="mb-4 flex flex-col w-full">
               <label htmlFor="firstname" className="block text-gray-600 font-medium mb-2 text-sm">Tên</label>
               <input
                 disabled={isLoading}
@@ -142,7 +142,7 @@ const RegisterPage: React.FC = () => {
               />
               <span className='text-xs text-red-500 h-4 w-full'>{fNameErrMsg}</span>
             </div>
-            <div className="mb-4 flex flex-col">
+            <div className="mb-4 flex flex-col w-full">
               <label htmlFor="lastname" className="block text-gray-600 font-medium mb-2 text-sm">Họ</label>
               <input
                 disabled={isLoading}

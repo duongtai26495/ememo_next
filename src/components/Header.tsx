@@ -1,12 +1,38 @@
 "use client"
+import { ACCESS_TOKEN, ACTIVATE_EMAIL, CURRENT_NOTE, LOCAL_NOTE, LOCAL_USER, LOCAL_WS, REFRES_TOKEN } from '@/app/assets/constants';
+import { checkLoginUser } from '@/app/utils/api_functions';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 const Header: React.FC = () => {
 
+  const router = useRouter()
   const [isOpenMenu, setOpenMenu] = useState(false)
 
   const toggleOpenMenu = () => { setOpenMenu(prevState => !prevState) }
+
+  const checkLoggedIn = () => {
+    checkLoginUser() ? "" : router.push("/login")
+  }
+
+  useEffect(() => {
+    checkLoggedIn()
+  }, [])
+
+  const logoutHandle = () => {
+    localStorage.removeItem(ACCESS_TOKEN)
+    localStorage.removeItem(REFRES_TOKEN)
+    localStorage.removeItem(LOCAL_USER)
+    localStorage.removeItem(LOCAL_NOTE)
+    localStorage.removeItem(LOCAL_WS)
+    localStorage.removeItem(CURRENT_NOTE)
+    localStorage.removeItem(ACTIVATE_EMAIL)
+    let waitingLogout = setTimeout(()=>{
+      checkLoggedIn()
+    },1500)
+    return () => clearTimeout(waitingLogout)
+  }
 
   return (
     <>
@@ -58,6 +84,12 @@ const Header: React.FC = () => {
               </span>
               <span className="text-white hover:underline font-bold">Profile</span>
             </Link>
+            <button onClick={()=>logoutHandle()} className='flex gap-3 items-center w-fit py-3 lg:py-1'>
+              <span className='w-12'>
+                <svg viewBox="0 0 24 24" className=" mx-auto" xmlns="http://www.w3.org/2000/svg"><g><path d="M0 0h24v24H0z" fill='none' /><path fill='#fff' d="M5 22a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H5zm10-6l5-4-5-4v3H9v2h6v3z" /></g></svg>
+              </span>
+              <span className="text-white hover:underline font-bold">Logout</span>
+            </button>
           </nav>
         </div>
       </header>

@@ -7,7 +7,7 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --primary-color: #1C1C1BFF;
-  --secondary-color:#CE4A7EFF;
+  --secondary-color: #CE4A7EFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,11 +23,11 @@ body {
   background-color: var(--primary-color);
 }
 
-.primary-background{
+.primary-background {
   background-color: var(--primary-color) !important;
 }
 
-.secondary-background{
+.secondary-background {
   background-color: var(--secondary-color) !important;
 }
 
@@ -37,19 +37,31 @@ body {
 }
 
 
-.navigation-sidebar:hover > .collapse-menu{
+.navigation-sidebar:hover>.collapse-menu {
   opacity: 0;
 }
 
-.navigation-sidebar:hover > .expand-menu{
+.navigation-sidebar:hover>.expand-menu {
   opacity: 1;
 }
-.background-page{
+
+.background-page {
   background-size: cover;
   background-position: center center;
 }
-.st0{opacity:0.2;fill:none;stroke:#000000;stroke-width:5.000000e-02;stroke-miterlimit:10;}
-.cls-1{fill:none;}
+
+.st0 {
+  opacity: 0.2;
+  fill: none;
+  stroke: #000000;
+  stroke-width: 5.000000e-02;
+  stroke-miterlimit: 10;
+}
+
+.cls-1 {
+  fill: none;
+}
+
 .m-menu_icons.open path:nth-child(2) {
   opacity: 0;
   transition-duration: 500ms;
@@ -65,28 +77,84 @@ body {
   transform: rotate(-45deg) translateX(-12px);
 }
 
-.active{
+.active {
   background-color: white !important;
   border-radius: 10px;
   padding: 10px;
-  color:var(--secondary-color) !important;
+  color: var(--secondary-color) !important;
 }
-@media (min-width:1024px){
-  .authen-box{
+
+@media (min-width:1024px) {
+  .authen-box {
     width: 500px;
   }
-  .background-page{
+
+  .background-page {
     width: 500px;
   }
 }
 
 @keyframes shake {
-  0% { transform: translateX(0); }
-  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
-  20%, 40%, 60%, 80% { transform: translateX(3px); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-3px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(3px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .shake-button {
   animation: shake .5s ease-in-out;
+}
+
+.switch-background {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc; 
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.switch-background-on {
+  background-color: #4CAF50; 
+  transition: background-color 0.4s ease-in-out;
+}
+.switch-background-off {
+  background-color: #cccccc; 
+  transition: background-color 0.4s ease-in-out;
+}
+.switch-remember {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease-in-out, background-color 1s ease-in-out; 
+}
+
+.switch-remember.active-switch {
+  transform: translateX(10px);
+}
+
+.switch-remember.inactive-switch {
+  transform: translateX(-10px);
 }
