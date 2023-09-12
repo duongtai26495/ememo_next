@@ -3,15 +3,16 @@ import { fetchDataFromAPI } from '@/app/assets/api_functions';
 import { RememberMe, SUCCESS_STATUS, USERNAME_LOCAL, ACCESS_TOKEN, REFRES_TOKEN } from '@/app/assets/constants';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 const LoginPage: React.FC = () => {
 
+  const router = useRouter()
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [isRemember, setRemember] = useState(false)
   const [isLoading, setLoading] = useState(false)
-  const [isPageLoaded, setPageLoaded] = useState(false)
 
   const loginHandle = async () => {
     let userLogin = {
@@ -24,10 +25,16 @@ const LoginPage: React.FC = () => {
       const content: any = result.content
       localStorage.setItem(ACCESS_TOKEN, content.access_token)
       localStorage.setItem(REFRES_TOKEN, content.refresh_token)
+      
       if (isRemember) {
         localStorage.setItem(USERNAME_LOCAL, username)
         localStorage.setItem(RememberMe, JSON.stringify(isRemember))
       }
+      let waitingRouter = setTimeout(()=>{
+        router.push("/")
+      },1500)
+
+      return () => clearTimeout(waitingRouter)
     }
     setLoading(false)
   }

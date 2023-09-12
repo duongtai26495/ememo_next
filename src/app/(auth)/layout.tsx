@@ -23,20 +23,6 @@ export default async function RootLayout({children, params}:{
     <html lang={params.locale}>
       <body className={inter.className}>
         {children}
-        <select
-          id="lang"
-          name="lang"
-          className="absolute top-2 right-2 px-4 py-2 border rounded text-sm"
-          required>
-          <option
-            value={"en"}
-            defaultChecked>
-            English
-          </option>
-          <option value={"vi"}>
-            Vietnamese
-          </option>
-        </select>
       </body>
     </html>
   )

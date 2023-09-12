@@ -1,6 +1,6 @@
 "use client"
 import { fetchDataFromAPI } from '@/app/assets/api_functions';
-import { ACTIVE_EMAIL, SUCCESS_STATUS } from '@/app/assets/constants';
+import { ACTIVATE_EMAIL, SUCCESS_STATUS } from '@/app/assets/constants';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
@@ -17,7 +17,7 @@ const ActivatePage: React.FC = () => {
     const [isSuccessActive, setSuccessActive] = useState(false)
 
     useEffect(() => {
-        let email: string = localStorage.getItem(ACTIVE_EMAIL) ?? ""
+        let email: string = localStorage.getItem(ACTIVATE_EMAIL) ?? ""
         email ? setEmail(email) : router.push("/login")
     }, [])
 
@@ -25,11 +25,11 @@ const ActivatePage: React.FC = () => {
         setErrorMess("")
         setLoading(true)
         if (activeCode.length === 10) {
-            let activeData = JSON.stringify({
+            let activateData = JSON.stringify({
                 email,
                 code: activeCode
             })
-            const result: any = await fetchDataFromAPI(`public/activate-account`, "POST", "", activeData)
+            const result: any = await fetchDataFromAPI(`public/activate-account`, "POST", "", activateData)
             if (result.status === SUCCESS_STATUS) {
                 setSuccessActive(true)
                 setLoading(false)
@@ -40,6 +40,18 @@ const ActivatePage: React.FC = () => {
 
         }
         setLoading(false)
+    }
+
+    const resendActivateMail = async () => {
+        setLoading(true)
+        const resultSendEmail: any = await fetchDataFromAPI(`public/send-activate-mail?email=${email}`, "GET")
+        if (resultSendEmail.status === SUCCESS_STATUS) {
+          setLoading(false)
+          setErrorMess("")
+        }else{
+            setErrorMess("Something went wrong. Please try again.")
+            setLoading(false)
+        }
     }
 
     return (
@@ -85,6 +97,7 @@ const ActivatePage: React.FC = () => {
                                 }
                             </button>
                             <button
+                            onClick={()=>resendActivateMail()}
                                 disabled={isLoading}
                                 className={`${errorMess ? "block" : "hidden"}  w-52 font-bold bg-pink-600 text-white p-3 rounded-lg mt-5 transition-all
                  lg:hover:bg-slate-100 border-pink-600 border-2 lg:hover:text-pink-600`}>

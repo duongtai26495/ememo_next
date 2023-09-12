@@ -1,6 +1,6 @@
 "use client"
 import { fetchDataFromAPI } from '@/app/assets/api_functions';
-import { ACTIVE_EMAIL, SUCCESS_STATUS } from '@/app/assets/constants';
+import { ACTIVATE_EMAIL, SUCCESS_STATUS } from '@/app/assets/constants';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -93,7 +93,7 @@ const RegisterPage: React.FC = () => {
     })
     const result: any = await fetchDataFromAPI("public/sign-up", "POST", undefined, userRegister)
     if (result && result.status === SUCCESS_STATUS) {
-      localStorage.setItem(ACTIVE_EMAIL, email)
+      localStorage.setItem(ACTIVATE_EMAIL, email)
       await sendActiveEmail()
       setLoading(false)
     } else {
@@ -122,7 +122,7 @@ const RegisterPage: React.FC = () => {
       <div className="flex w-fit rounded-lg lg:shadow-lg overflow-hidden">
         <div className='hidden lg:flex w-full background-page' style={{ backgroundImage: "url(https://source.unsplash.com/random)" }}></div>
         <div className='lg:bg-white p-8 w-full authen-box'>
-          <h2 className="text-2xl font-semibold mb-4">{t('register')}</h2>
+          <h2 className="text-2xl font-semibold mb-4">Register</h2>
           <div className='flex gap-3 items-center'>
             <div className="mb-4 flex flex-col">
               <label htmlFor="firstname" className="block text-gray-600 font-medium mb-2 text-sm">Tên</label>
